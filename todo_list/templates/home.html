@@ -30,18 +30,18 @@
                         <del> {{ thing.item }} </del>
                     </td>
                     <td class="text-center">
-                        {{ thing.completed }}
+                        <a href="{% url 'uncross' thing.id%}">UnCross</a>
                     </td>
-                    <td class="text-center">Delete</td>
+                    <td class="text-center"><a href="{% url 'delete' thing.id %}">Delete</a></td>
 
                 </tr>
             {% else %}
                 <tr class="">
                     <td>{{ thing.item }}</td>
                     <td class="text-center">
-                        {{ thing.completed }}
+                        <a href="{% url 'cross_off' thing.id %}">Cross</a>
                     </td>
-                    <td class="text-center">Delete</td>
+                    <td class="text-center"><a href="{% url 'delete' thing.id %}">Delete</a></td>
 
                 </tr>
             {% endif %}
