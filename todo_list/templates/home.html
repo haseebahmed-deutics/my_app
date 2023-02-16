@@ -3,6 +3,14 @@
     To-Do List | Homepage!
 {% endblock %}
 {% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
     <h1 class="mb-3">Hello, world! Homepage</h1>
     <table class="table  table-bordered">
         <thead class="table-dark ">
@@ -17,23 +25,25 @@
             {% if thing.completed %}
 
 
-            <tr class ="table-secondary">
-                <td>   <del> {{ thing.item }} </del></td>
-                <td class="text-center">
-                    {{ thing.completed }}
-                </td>
-                <td class="text-center">Delete</td>
+                <tr class="table-secondary">
+                    <td>
+                        <del> {{ thing.item }} </del>
+                    </td>
+                    <td class="text-center">
+                        {{ thing.completed }}
+                    </td>
+                    <td class="text-center">Delete</td>
 
-            </tr>
+                </tr>
             {% else %}
                 <tr class="">
-                <td>{{ thing.item }}</td>
-                <td class="text-center">
-                    {{ thing.completed }}
-                </td>
-                <td class="text-center">Delete</td>
+                    <td>{{ thing.item }}</td>
+                    <td class="text-center">
+                        {{ thing.completed }}
+                    </td>
+                    <td class="text-center">Delete</td>
 
-            </tr>
+                </tr>
             {% endif %}
         {% endfor %}
 
