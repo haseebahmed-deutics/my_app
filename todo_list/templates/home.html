@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1> Home Page </h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+    To-Do List | Homepage!
+{% endblock %}
+{% block content %}
+    <h1 class="mb-3">Hello, world! Homepage</h1>
+    <table class="table  table-bordered">
+        <thead class="table-dark ">
+        <td>Item</td>
+        <td class="text-center">
+            Complete
+        </td>
+        <td class="text-center"></td>
+        </thead>
+        <tbody>
+        {% for thing in things %}
+            {% if thing.completed %}
+
+
+            <tr class ="table-secondary">
+                <td>   <del> {{ thing.item }} </del></td>
+                <td class="text-center">
+                    {{ thing.completed }}
+                </td>
+                <td class="text-center">Delete</td>
+
+            </tr>
+            {% else %}
+                <tr class="">
+                <td>{{ thing.item }}</td>
+                <td class="text-center">
+                    {{ thing.completed }}
+                </td>
+                <td class="text-center">Delete</td>
+
+            </tr>
+            {% endif %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
